@@ -117,8 +117,6 @@ export default {
       .then(response => {
         this.suportesArray = response.data
 	 });
-	 
-	alert(this.suportesArray);
   },
 
 }
