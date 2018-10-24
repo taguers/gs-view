@@ -3,7 +3,8 @@
     <div class="form-group">
       <input type="text" class="form-control" v-model="search" placeholder="Search">
     </div>
-    <div class="table-responsive">
+    <h1 v-if="!isLoaded">Sem dados no momento</h1>
+    <div class="table-responsive" v-if="isLoaded">
       <table class="table table-striped table-bordered" style="width:100%">
           <thead width="400px">
               <tr>
@@ -11,23 +12,21 @@
                   <th scope="col" @click="sort('cliente')">Cliente <i class="fas fa-sort-alpha-down float-right"></i></th>
                   <th scope="col">Codigo</th>
                   <th scope="col">Data</th>
-                  <th scope="col">Hora</th>
               </tr>
           </thead>
           <tbody>
-              <tr v-for="(suporte, index) in (sortedActivity, filteredList)" :key="index">
+              <tr v-for="(suporte, index) in filteredList" :key="index">
                 <!-- <td>{{index + 1}}</td> -->
-                <td>{{suporte.consultor}}</td>
-                <td>{{suporte.cliente}}</td>
-                <td>{{suporte.codigo}}</td>
-                <td>{{suporte.date}}</td>
-                <td>{{suporte.hora}}</td>
+                <td>{{suporte.id}}</td>
+                <td>{{suporte.title}}</td>
+                <td>{{suporte.userId}}</td>
+                <td>{{suporte.completed}}</td>
               </tr>
           </tbody>
       </table>
     </div>
-  <button @click="prevPage" class="float-left btn btn-outline-info btn-sm"><i class="fas fa-arrow-left"></i> Anterior</button> 
-  <button @click="nextPage" class="float-right btn btn-outline-info btn-sm">Próximo <i class="fas fa-arrow-right"></i></button>
+    <button @click="prevPage" class="float-left btn btn-outline-info btn-sm"><i class="fas fa-arrow-left"></i> Anterior</button> 
+    <button @click="nextPage" class="float-right btn btn-outline-info btn-sm">Próximo <i class="fas fa-arrow-right"></i></button>
   </div>
 </template>
 
@@ -50,10 +49,11 @@ export default {
     suportesArray: [],
     currentSort:'cliente',
     currentsortdir:'asc',
-    search: '',
     searchselection: '',
     pagesize: 10,
-    currentpage: 1
+    currentpage: 1,
+    isLoaded: false,
+    search: ''
   }),
 
   methods: {
@@ -85,38 +85,19 @@ export default {
         if(index >= start && index < end) return true;
       });
     },
-
     filteredList () {
-      return this.suportesArray.filter((data) => {
-        let consultor = data.consultor.toLowerCase().match(this.search.toLowerCase());
-        let cliente = data.cliente.toLowerCase().match(this.search.toLowerCase());
-        let codigo = data.codigo.toLowerCase().match(this.search.toLowerCase());
-        let date = data.date.toLowerCase().match(this.search.toLowerCase());
-        let hora = data.hora.toLowerCase().match(this.search.toLowerCase());
-        let cpontual = data.cpontual.toLowerCase().match(this.search.toLowerCase());
-        let cclaro = data.cclaro.toLowerCase().match(this.search.toLowerCase());
-        let cvozadeq = data.cvozadeq.toLowerCase().match(this.search.toLowerCase());
-        let cdidat = data.cdidat.toLowerCase().match(this.search.toLowerCase());
-        let cobjct = data.cobjct.toLowerCase().match(this.search.toLowerCase());
-        let nota = data.cdidat.toLowerCase().match(this.search.toLowerCase());
-        let observacao = data.observacao.toLowerCase().match(this.search.toLowerCase());
-        let inclusao = data.inclusao.toLowerCase().match(this.search.toLowerCase());
-        return consultor || cliente || codigo || data || hora ||
-         cpontual || cclaro || cvozadeq || cdidat || cobjct ||
-         nota || observacao || inclusao;
-      }).filter((row, index) => {
-        let start = (this.currentPage-1)*this.pageSize;
-        let end = this.currentPage*this.pageSize;
-        if(index >= start && index < end) return true;
-      });
+      return this.suportesArray.filter(data => 
+        data.title.toLowerCase().includes(this.search.toLowerCase()))
     }
   },
 
-  created () {
-    axios.post('/gosoft/gs-view/src/include/suporte.php')
+  mounted () {
+    axios.get(`${process.env.VUE_APP_API_PLACEHOLDER}`)
       .then(response => {
-        this.suportesArray = response.data
-	 });
+        this.suportesArray = [...response.data]
+        this.isLoaded = true
+      })
+      .catch(error => console.error('deu ruim'))
   },
 
 }
