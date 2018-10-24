@@ -7,7 +7,7 @@
       <table class="table table-striped table-bordered" style="width:100%">
           <thead width="400px">
               <tr>
-                  <th scope="col">Consultor</th>
+                  <th scope="col">Atendente</th>
                   <th scope="col" @click="sort('cliente')">Cliente <i class="fas fa-sort-alpha-down float-right"></i></th>
                   <th scope="col">Codigo</th>
                   <th scope="col">Data</th>
@@ -17,7 +17,7 @@
           <tbody>
               <tr v-for="(suporte, index) in (sortedActivity, filteredList)" :key="index">
                 <!-- <td>{{index + 1}}</td> -->
-                <td>{{suporte.consultor}}</td>
+                <td>{{suporte.atendente}}</td>
                 <td>{{suporte.cliente}}</td>
                 <td>{{suporte.codigo}}</td>
                 <td>{{suporte.date}}</td>
@@ -88,7 +88,7 @@ export default {
 
     filteredList () {
       return this.suportesArray.filter((data) => {
-        let consultor = data.consultor.toLowerCase().match(this.search.toLowerCase());
+        let atendente = data.atendente.toLowerCase().match(this.search.toLowerCase());
         let cliente = data.cliente.toLowerCase().match(this.search.toLowerCase());
         let codigo = data.codigo.toLowerCase().match(this.search.toLowerCase());
         let date = data.date.toLowerCase().match(this.search.toLowerCase());
@@ -113,10 +113,13 @@ export default {
   },
 
   created () {
-    axios.post('/gosoft/gs-view/src/include/suporte.php')
+    axios.post('http://localhost/gosoft/gs-view/src/include/suporte.php')
       .then(response => {
         this.suportesArray = response.data
-	 });
+	 })
+	 .catch(error => {
+		 console.log("Erro => ", error)
+	 })
   },
 
 }

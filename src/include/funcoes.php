@@ -27,3 +27,5 @@ function consultar($sql)
     global $conn;
     return sqlsrv_query($conn, $sql);
 }
+
+?>

@@ -3,23 +3,25 @@
 	<img src="./assets/logo.png">
 	<vue-tabs>
 		<v-tab title="Relacionamento">
-			<DataTable msg="[GOSOFT] - Visualização de pesquisa"/>
+			<!-- <RelacionamentoDT msg="[GOSOFT] - Visualização de pesquisa"/> -->
 		</v-tab>
 
 		<v-tab title="Suporte">
-			<DataTable msg="[GOSOFT] - Visualização de pesquisa"/>
+			<SuporteDT msg="[GOSOFT] - Visualização de pesquisa"/>
 		</v-tab>
 	</vue-tabs>
   </div>
 </template>
 
 <script>
-  import DataTable from './components/DataTable.vue'
+  import RelacionamentoDT from './components/DataTable.relacionamento.vue'
+  import SuporteDT from './components/DataTable.suporte.vue'
 
 export default {
   name: 'app',
   components: {
-    DataTable
+	SuporteDT,
+	RelacionamentoDT
   }
 }
 
