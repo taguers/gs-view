@@ -99,7 +99,7 @@ export default {
     currentSort:'id',
     currentSortDir:'asc',
     searchSelection: '',
-    pageSize: 2,
+    pageSize: 5,
     currentPage: 1,
     totalLength: 1,
     totalPages: 1,
@@ -119,17 +119,24 @@ export default {
     nextPage: function() {
 	 if (this.currentPage * this.pageSize < this.totalLength)
 	 {
+	   this.from = this.from+this.pageSize;
+	   this.to = this.to+this.pageSize;
 	   this.currentPage++;
 	 }
     },
     prevPage: function() {
 	 if (this.currentPage > 1) 
 	 {
-		 this.currentPage--;
+        this.from = this.from-this.pageSize;
+	   this.to = this.to-this.pageSize;
+	   this.currentPage--;
 	 }
     },
     goToPage: function(pn){
-	 if (pn != this.currentPage) this.currentPage = pn;
+	 if (pn != this.currentPage) 
+	 {
+	   this.currentPage = pn;
+	 }
     }
   },
 
@@ -178,11 +185,11 @@ export default {
 	   this.suportes = [...response.data]
 	   this.totalLength = this.suportes.length
 	   this.totalPages = Math.floor(this.totalLength/this.pageSize) === 0 ? 1 : Math.floor(this.totalLength/this.pageSize)
-	   this.isLoaded = true
+	   this.isLoaded = false
 	   this.from = 1
 	   this.to = this.pageSize
       })
-      .catch(error => console.log("Error =>", error))
+      .catch(error => {console.log("Error =>", error),this.isLoaded = false})
   }
 };
 </script>
