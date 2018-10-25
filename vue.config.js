@@ -1,10 +1,7 @@
 module.exports = {
-    rules: {
-        'no-console': 'off',
-    },
     devServer: {
         proxy: {
-            '/gosoft/gs-view/src/include': {
+            '/gosoft/gs-view/src/includes': {
                 target: 'http://localhost/gosoft',
                 ws: true,
                 changeOrigin: true

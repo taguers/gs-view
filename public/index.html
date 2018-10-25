@@ -1,30 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="shortcut icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,900" rel="stylesheet">
     <title>[Gosoft] - Visualizador</title>
   </head>
   <body>
-    
-    <noscript>
-      <strong>Por favor, ative o JavaScript no seu navegador. <a href="https://www.enable-javascript.com/pt/" target="_blank" >Saiba como.</a></strong>
-    </noscript>
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12"> 
-          <div id="app"></div>
-        </div>
-      </div>
-    </div>
+	<div id="app-header"></div>
+	     
+	<section class="content-wrapper main-content clear-fix">
+		<div id="app"></div> 
+	</section> 
 
+	<noscript>
+		<strong>Por favor, ative o JavaScript no seu navegador. <a href="https://www.enable-javascript.com/pt/" target="_blank" >Saiba como.</a></strong>
+	</noscript>
+	<div class="footer">
+		<div class="container">
+			<p class="copy">
+				&copy; <span><%= new Date().getFullYear() %></span> GoSoft Informática.Todos os direitos reservados.
+			</p>
+		</div>
+	</div>
   </body>
 </html>

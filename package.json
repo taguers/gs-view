@@ -1,5 +1,5 @@
 {
-  "name": "basic-data-table",
+  "name": "gs-view",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "bootstrap": "^4.1.3",
+    "moment": "^2.22.2",
     "vue": "^2.5.7",
+    "vue-json-excel": "^0.2.96",
     "vue-nav-tabs": "^0.5.7",
     "yarn": "^1.10.1"
   },
