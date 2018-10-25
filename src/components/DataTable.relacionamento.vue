@@ -3,7 +3,7 @@
     <div class="form-group">
       <input type="text" class="form-control" v-model="search" placeholder="Search">
     </div>
-    <h1 v-if="!isLoaded">Sem dados no momento</h1>
+    <h1 v-if="!isLoaded">Não há dados para serem exibidos.</h1>
     <div class="table-responsive" v-if="isLoaded">
       <table class="table table-striped table-bordered" style="width:100%">
           <thead width="400px">
@@ -37,7 +37,7 @@ import axios from 'axios';
 export default {
   data: 
   () => ({
-    suportesArray: [],
+    suportes: [],
     currentSort:'cliente',
     currentsortdir:'asc',
     searchselection: '',
@@ -55,7 +55,7 @@ export default {
       this.currentSort = s;
     },
     nextPage:function() {
-      if((this.currentPage*this.pageSize) < this.suportesArray.length) this.currentPage++;
+      if((this.currentPage*this.pageSize) < this.suportes.length) this.currentPage++;
     },
     prevPage:function() {
       if(this.currentPage > 1) this.currentPage--;
@@ -64,7 +64,7 @@ export default {
 
   computed: {
     sortedActivity:function() {
-      return this.suportesArray.sort((a,b) => {
+      return this.suportes.sort((a,b) => {
         let modifier = 1;
         if(this.currentSortDir === 'desc') modifier = -1;
         if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
@@ -77,18 +77,18 @@ export default {
       });
     },
     filteredList () {
-      return this.suportesArray.filter(data => 
+      return this.suportes.filter(data => 
         data.title.toLowerCase().includes(this.search.toLowerCase()))
     }
   },
 
   mounted () {
-    axios.get(`${process.env.VUE_APP_API_PLACEHOLDER}`)
+    axios.get(`${process.env.VUE_APP_API_RELACIONAMENTO}`)
       .then(response => {
-        this.suportesArray = [...response.data]
+        this.suportes = [...response.data]
         this.isLoaded = true
       })
-      .catch(error => console.error('deu ruim'))
+      .catch(error => console.error("Erro encontrado =>", error))
   },
 
 }

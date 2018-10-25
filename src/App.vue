@@ -3,11 +3,11 @@
 	<img src="./assets/logo.png">
 	<vue-tabs>
 		<v-tab title="Relacionamento">
-			<!-- <RelacionamentoDT msg="[GOSOFT] - Visualização de pesquisa"/> -->
+			<RelacionamentoDT msg="[GOSOFT] - Visualização de pesquisa"/>
 		</v-tab>
 
 		<v-tab title="Suporte">
-			<SuporteDT msg="[GOSOFT] - Visualização de pesquisa"/>
+			<!-- <SuporteDT msg="[GOSOFT] - Visualização de pesquisa"/> -->
 		</v-tab>
 	</vue-tabs>
   </div>

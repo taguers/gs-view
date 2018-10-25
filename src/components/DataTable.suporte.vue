@@ -14,7 +14,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr v-for="(suporte,index) in (suportes,filteredList)" :key="index">
+              <tr v-for="(suporte, index) in filteredList" :key="index">
                 <td>{{suporte.id}}</td> 
                 <td>{{suporte.atendente}}</td>
                 <td>{{suporte.cliente}}</td>
@@ -127,15 +127,13 @@ export default {
     }
   },
 
-  created() {
-    axios
-      .post("http://localhost/gosoft/gs-view/src/include/suporte.php")
+  mounted() {
+    axios.get(`${process.env.VUE_APP_API_SUPORTE}`)
       .then(response => {
-        this.suportes = response.data;
+        this.suportesArray = [...response.data]
+        this.isLoaded = true
       })
-      .catch(error => {
-        console.log("Erro => ", error);
-      });
+      .catch(error => console.error("Error =>", error))
   }
 };
 </script>
