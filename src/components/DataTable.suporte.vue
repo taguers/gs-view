@@ -5,7 +5,7 @@
     </div>
     <h1 v-if="!isLoaded">Não há dados para serem exibidos.</h1>
     <div class="table-responsive" v-if="isLoaded">
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-bordered">
           <thead>
               <tr>
                 <!-- <th scope="col" @click="sort('id')">Id</th> -->
@@ -91,7 +91,8 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "axios"
+import Moment from 'moment'
 
 export default {
   data: () => ({
@@ -159,8 +160,8 @@ export default {
           let atendente = data.atendente.toLowerCase().match(this.search.toLowerCase());
 	 	let cliente = data.cliente.toLowerCase().match(this.search.toLowerCase());  
 	     let contato = data.contato.toLowerCase().match(this.search.toLowerCase());
-		let datahora = data.data === null ? '' : data.data.date.toLowerCase().match(this.search.toLowerCase());
-		let datainclusao = data.datainclusao === null ? '' : data.datainclusao.date.toLowerCase().match(this.search.toLowerCase());
+		let datahora = data.data === null ? '' : Moment(String(data.data.date)).locale('pt').format('L').toLowerCase().match(this.search.toLowerCase());
+		let datainclusao = data.datainclusao === null ? '' : Moment(String(data.datainclusao.date)).locale('pt').format('L').toLowerCase().match(this.search.toLowerCase());
           let atendenteseidentificou = data.atendenteseidentificou.toLowerCase().match(this.search.toLowerCase());
           let atendentefoiclaro = data.atendentefoiclaro.toLowerCase().match(this.search.toLowerCase());
           let atendentevozadequada = data.atendentevozadequada.toLowerCase().match(this.search.toLowerCase());
@@ -185,7 +186,7 @@ export default {
 	   this.suportes = [...response.data]
 	   this.totalLength = this.suportes.length
 	   this.totalPages = Math.floor(this.totalLength/this.pageSize) === 0 ? 1 : Math.floor(this.totalLength/this.pageSize)
-	   this.isLoaded = false
+	   this.isLoaded = true
 	   this.from = 1
 	   this.to = this.pageSize
       })

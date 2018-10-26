@@ -9,13 +9,11 @@ conectar();
 $pagina_atual = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
 
 $data = $_REQUEST;
-
 if (isset($data['page'])) {
     unset($data['page']);
 }
 
 $query = http_build_query($data);
-
 if (true) {
     $termo = '';
     if (isset($_GET['termo']) and !empty($_GET['termo'])) {
@@ -31,14 +29,15 @@ if (true) {
 
     $base = "WITH Paginado AS ( 
 		SELECT ROW_NUMBER() OVER(ORDER BY id ASC) AS linha, tbPesquisasSuporte.* FROM tbPesquisasSuporte) 
-		SELECT TOP ( $porPagina) Paginado.* FROM Paginado ";
+		SELECT Paginado.* FROM Paginado ";
+		// SELECT TOP ( $porPagina) Paginado.* FROM Paginado ";
     
     $sql = "$base WHERE linha >  $porPagina * ($pagina_atual - 1) $termo ";
       
     $stmt = consultar($sql);
 
     $base = "$base $termo ";
-    $base = str_replace("TOP ( $porPagina) Paginado.*", "count(*) as total ", $base);
+    $base = str_replace("Paginado.*", "count(*) as total ", $base);
     $base = str_replace(" and ", " where ", $base);
     $base = explode("order by", $base);
     $total = consultar($base[0]);
