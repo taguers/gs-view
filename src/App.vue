@@ -29,7 +29,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="box">
-									<vue-tabs>
+									<vue-tabs type="pills">
 										<v-tab title="Relacionamento">
 											<br /> 
 											<RelacionamentoDT msg="[GOSOFT] - Visualização de pesquisa"/>

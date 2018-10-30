@@ -6,7 +6,7 @@ html{
   
 body {
   color: #333333;
-  background:#f7f7f7;
+  background:#FBF7FA;
   font-family: "Open Sans", sans-serif;
   direction: "ltr";
   font-size: 14px; 
@@ -40,7 +40,7 @@ h5 {font-size: 14px;}
 .header:after {clear: both; }
 .header .container{position: relative;padding:0; height: 54px;}
 
-.header .header-top {background:#595959;}
+.header .header-top {background:#006494;}
 .header .header-top .logo {float: left;display: block;}
 .header .header-top .logo .logo-default{display: block;float:left;height:54px;display:relative;width:126px;}
 .header .header-top .logo .logo-default .bg-blade{display:block;position:absolute;top:0;left:0;height:54px;width:126px;z-index:0;background:#000;filter: alpha(opacity=15);opacity: 0.15;}
@@ -170,10 +170,14 @@ h5 {font-size: 14px;}
 .btn:hover {transition: all 0.3s;opacity:0.75; }
 .btn:not(.btn-sm):not(.btn-lg) { line-height: 1.44; }
 .btn-default, .btn-default:hover {background:#999;border:1px solid #999;color:#fff;}
-.btn-primary, .btn-primary:hover {background:#999;border:1px solid #999;color:#fff;}
+.btn-primary, .btn-primary:hover {background:#008DD5;border:1px solid #008DD5;color:#fff;}
 .btn-remove, .btn-remove:hover {background:#ef4836;border:1px solid #ef4836;color:#fff;}
 .btn-group-devided .btn {margin-right:8px;}
 .btn-full {width:100%;}
+.btn-outline-info {color:#008DD5;border-color:#008DD5;}
+.btn-outline-info:hover{color:#fff;background:#008DD5;}
+.btn-outline-info.disabled:hover {border-color:#ced4da;color:#ced4da;}
+.pagination .btn.disabled, .pagination .btn.disabled:hover {border-color:#ced4da;color:#ced4da;cursor: not-allowed;}
 
 /* Box */
 .box {border-radius: 4px; margin-bottom: 25px;background-color: #fff; padding: 12px 20px 15px;}
@@ -191,6 +195,7 @@ h5 {font-size: 14px;}
 .box-login .btn {padding:12px;margin-top:20px;}
 .box-pagination p{font-size:13px;color:#696969;margin:35px 0 20px 0;}
 .box-pagination .pagination{float:right;}
+.box-pagination label {font-size:13px; color:#898989;}
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover { background-color: #999; border-color: #999;}
 
 /* Filter */
@@ -230,20 +235,31 @@ h5 {font-size: 14px;}
 .link-input {margin-top:30px;display:inline-block;}
 .bootstrap-select .btn-default {background: #fff; border-color: #c2cad8;color: #555;box-shadow: inset 0 1px 1px rgba(0,0,0,.075) !important;}
 .bootstrap-select .dropdown-menu > li > a {color:#555!important;}
+.table-head .form-control{-webkit-border-radius: 30px!important;-moz-border-radius: 30px!important;border-radius: 30px!important;}
 
 /* Table */
-.table > tbody > tr > td, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td{vertical-align:middle;}
+.table > tbody > tr > td, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td{vertical-align:middle;font-size:13px;}
 .col-btn-group, .table > tbody > tr > td .btn-group  {width:140px;}
 
 .data-evento {padding:0;margin:0;list-style:none;}
 .data-evento li { margin: 0;display: inline-block; width: 120px;}
 
-/* Paginação Table */
+.table th i {margin-left:10px;color:#d9d9d9;} 
+.table th:hover i, .table th.active i {color:#65A5F3;} 
+
+.table-striped tbody tr:nth-of-type(odd) { background-color: #E7F0F5;}
+
 #pagination-number { height: 34px;margin: 0 10px;}
+
+.vue-tabs .tab-content {padding-top:10px;}
+.vue-tabs .table {margin-top:10px;margin-bottom:35px;}
 
 /* Abas */
 .nav-pills {margin-bottom:15px;}
-.nav-pills.nav>li>a {padding: 5px 15px;}
+.nav-pills.nav>li>a {padding: 5px 15px;-webkit-border-radius: 4px!important;-moz-border-radius: 4px!important;border-radius: 4px!important;}
+
+.vue-tabs .nav-pills > li a.active_tab{color: #fff;background-color: #008DD5!important;}
+.vue-tabs .nav-pills > li a{font-size:13px;text-transform:uppercase;font-weight:600;}
 
 /* Modal */
 .modal-content{-webkit-border-radius: 4px!important;-moz-border-radius: 4px!important;border-radius: 4px!important;}
@@ -258,6 +274,10 @@ h5 {font-size: 14px;}
 
 @media (min-width:1330px){
 	.container{width:100%}
+}
+
+@media (min-width: 1200px){
+	.container {max-width: 1329px;}
 }
 
 @media (min-width: 992px) {

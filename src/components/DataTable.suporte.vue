@@ -1,17 +1,26 @@
 <template>
   <div class="box-body">
-    <div class="form-group">
-      <input type="text" class="form-control" v-model="search" placeholder="Procurar">
-    </div>
+  <div class="table-head">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+				  <input type="text" class="form-control" v-model="search" placeholder="Procurar">
+				</div>
+			</div>
+			<div class="col-md-8">
+				<button class="float-right btn  btn-outline-info"><i class="fas fa-file-download"></i></button>
+			</div>
+		</div>
+	</div>
     <h1 v-if="!isLoaded">Não há dados para serem exibidos.</h1>
     <div class="table-responsive" v-if="isLoaded">
-      <table class="table table-striped table-bordered">
+      <table class="table table-striped">
           <thead>
               <tr>
                 <!-- <th scope="col" @click="sort('id')">Id</th> -->
-                <th scope="col" @click="sort('atendente')">Atendente<i class="fas fa-sort-alpha-down float-right"></i></th>
-                <th scope="col" @click="sort('cliente')">Cliente<i class="fas fa-sort-alpha-down float-right"></i></th>
-                <th scope="col" @click="sort('contato')">Contato<i class="fas fa-sort-alpha-down float-right"></i></th>
+                <th scope="col" @click="sort('atendente')">Atendente<i class="fas fa-sort"></i></th>
+                <th scope="col" @click="sort('cliente')">Cliente<i class="fas fa-sort"></i></th>
+                <th scope="col" @click="sort('contato')">Contato<i class="fas fa-sort"></i></th>
 			 <th scope="col">Data</th>
 			 <th scope="col">Hora</th>
 			 <th scope="col">Atendente se identificou</th>

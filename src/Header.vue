@@ -8,7 +8,7 @@
 						<span class="bg-blade"></span>
 						<img src="./assets/img/logo-gosoft.png" alt="Gosoft - Criando Soluções">
 					</a>
-					<h2 class="system-name"><a href="#">SISTEMA</a><span>CTG</span></h2>
+					<h2 class="system-name"><a href="#">SISTEMA</a><span>CTG</span> - Pesquisas</h2>
 				</div>
 			</div>
 		</div>

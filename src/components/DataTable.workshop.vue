@@ -1,65 +1,74 @@
 <template>
   <div class="box-body">
-    <div class="form-group">
-      <input type="text" class="form-control" v-model="search" placeholder="Procurar">
-    </div>
+	<div class="table-head">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+				  <input type="text" class="form-control" v-model="search" placeholder="Procurar">
+				</div>
+			</div>
+			<div class="col-md-8">
+				<button class="float-right btn  btn-outline-info"><i class="fas fa-file-download"></i></button>
+			</div>
+		</div>
+	</div>
     <h1 v-if="!isLoaded">Não há dados para serem exibidos.</h1>
     <div class="table-responsive" v-if="isLoaded">
-      <table class="table table-striped table-bordered">
+      <table class="table table-striped">
           <thead>
 			<tr> 
 				<!-- <th scope="col" @click="sort('id')">Id</th> -->
 				<th scope="col">Data</th>
-				<th scope="col" @click="sort('')">Título<i class="fas fa-sort-alpha-down float-right"></i></th>								
-				<th scope="col" @click="sort('')">Instrutor<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Empresa<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Nome<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Alimentação<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Ritmo<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Divulgação<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Localização<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Instalações<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Carga horária<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Atendimento recepção<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Atendimento pré-evento<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Palestrante<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Qualidade geral<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Apresentação<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Clareza<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Material<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Esclareceu dúvidas<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Conteúdo apresentado<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Sugestão próximos eventos<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Como soube<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Utiliza Condomínio Web<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Utiliza Adm. web<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Utiliza controle Doc.<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Utiliza conciliação<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Utiliza NF web<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Utiliza Compl. Emissão Form.<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Utiliza Gestão Pessoal Folha Web<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Boleto por e-mail<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Leitura Arq. Retorno<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Impressão cheques<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Pgto. Eletrônico<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Envio boleto de cobrança<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Acompanhamentos em multa<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Impressão formulários<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Programação de rateio<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Apuração de tributos<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Isenção síndico folha web<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Integração lançamentos<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Orçamento previsão<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Controle de contratos<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Controle de consumos<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Débito automático<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Controle pagamentos<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Notas de reembolso<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Cartas confecção<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('')">Personalização<i class="fas fa-sort-alpha-down float-right"></i></th>
+				<th scope="col" @click="sort('')">Título<i class="fas fa-sort"></i></th>								
+				<th scope="col" @click="sort('')">Instrutor<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Empresa<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Nome<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Alimentação<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Ritmo<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Divulgação<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Localização<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Instalações<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Carga horária<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Atendimento recepção<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Atendimento pré-evento<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Palestrante<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Qualidade geral<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Apresentação<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Clareza<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Material<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Esclareceu dúvidas<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Conteúdo apresentado<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Sugestão próximos eventos<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Como soube<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Utiliza Condomínio Web<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Utiliza Adm. web<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Utiliza controle Doc.<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Utiliza conciliação<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Utiliza NF web<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Utiliza Compl. Emissão Form.<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Utiliza Gestão Pessoal Folha Web<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Boleto por e-mail<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Leitura Arq. Retorno<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Impressão cheques<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Pgto. Eletrônico<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Envio boleto de cobrança<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Acompanhamentos em multa<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Impressão formulários<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Programação de rateio<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Apuração de tributos<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Isenção síndico folha web<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Integração lançamentos<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Orçamento previsão<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Controle de contratos<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Controle de consumos<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Débito automático<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Controle pagamentos<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Notas de reembolso<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Cartas confecção<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('')">Personalização<i class="fas fa-sort"></i></th>
 				<th scope="col">Já fez treinamentos</th>
-				<th scope="col" @click="sort('')">Bancos<i class="fas fa-sort-alpha-down float-right"></i></th>
-				<th scope="col" @click="sort('observacao')">Observações<i class="fas fa-sort-alpha-down float-right"></i></th>
+				<th scope="col" @click="sort('')">Bancos<i class="fas fa-sort"></i></th>
+				<th scope="col" @click="sort('observacao')">Observações<i class="fas fa-sort"></i></th>
 				<th scope="col">Data inclusão</th>
 			</tr>
           </thead>
