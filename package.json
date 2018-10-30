@@ -47,5 +47,17 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taguers/gs-view.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taguers/gs-view/issues"
+  },
+  "homepage": "https://github.com/taguers/gs-view#readme",
+  "description": ""
 }
