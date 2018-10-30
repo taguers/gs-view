@@ -21,7 +21,7 @@ import './assets/css/main.css'
 export default {
   name: 'app-header',
   components: {
-  }
+  } 
 }
 </script>
 
